@@ -11,7 +11,7 @@ const matchReducer = (state = initialState, action) => {
         case ACTION.GET_ALL_MATCHES_SUCCESS:
             return {
                 ...state,
-                matches: action.payload.matches
+                matches: action.matches
             }
 
         default:

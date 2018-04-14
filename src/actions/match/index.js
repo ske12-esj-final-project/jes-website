@@ -1,5 +1,5 @@
 import axios from 'axios'
-import constants from '../constants'
+import constants from '../../constants'
 
 const API = constants.API
 const ACTION = constants.ACTION
@@ -10,12 +10,12 @@ const getAllMatchesStart = () => ({
 
 const getAllMatchesSuccess = matches => ({
     type: ACTION.GET_ALL_MATCHES_SUCCESS,
-    matches
+    matches: matches
 })
 
-const getAllMatchesFailed = errr => ({
+const getAllMatchesFailed = err => ({
     type: ACTION.GET_ALL_MATCHES_FAILED,
-    err
+    error: err
 })
 
 export const getAllMatches = () => (dispatch) => {
