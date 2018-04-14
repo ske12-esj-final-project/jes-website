@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
+import matchReducer from './match'
+
 export default combineReducers({
-    routing: routerReducer
+    routing: routerReducer,
+    match: matchReducer
 })
 
