@@ -4,28 +4,61 @@ import { connect } from 'react-redux'
 import { getAllMatches } from '../../actions/match'
 import { getAllPlayers } from '../../actions/player'
 
+import ReactTable from 'react-table'
+import 'react-table/react-table.css'
+import moment from 'moment'
+
 class Insights extends Component {
+
+    componentDidMount() {
+        this.props.getAllMatches()
+        this.props.getAllPlayers()
+    }
+
     render() {
         return (
             <div>
                 <h1>Insights</h1>
-                <button onClick={() => this.props.getAllMatches()}>Get All Matches</button>
-                <div>
-                    { _.map(this.props.match.matches, m => {
-                        return (
-                            <div key={ m._id }>{ m.dateCreated } ({ m.duration })</div>
-                        )
-                    }) }
-                </div>
-
-                <button onClick={() => this.props.getAllPlayers()}>Get All Players</button>
-                <div>
-                    { _.map(this.props.player.players, p => {
-                        return (
-                            <div key={ p.id }>{ p.username }</div>
-                        )
-                    }) }
-                </div>
+                
+                <h2>Leaderboard</h2>
+                <ReactTable 
+                    data={this.props.player.players} 
+                    columns={[
+                        {
+                            Header: 'Username',
+                            accessor: 'username'
+                        },
+                        {
+                            Header: 'Score',
+                            accessor: 'score'
+                        },
+                    ]}
+                    defaultPageSize={10}
+                    className="-striped -highlight"
+                />
+                
+                <h2>Matches</h2>
+                <ReactTable 
+                    data={this.props.match.matches} 
+                    columns={[
+                        {
+                            Header: 'ID',
+                            accessor: '_id'
+                        },
+                        {
+                            Header: 'Players',
+                            id: 'players',
+                            accessor: d => _.size(d.players)
+                        },
+                        {
+                            Header: 'Started on',
+                            id: 'dateCreated',
+                            accessor: d => moment(new Date(d.dateCreated)).fromNow()
+                        }
+                    ]}
+                    defaultPageSize={10}
+                    className="-striped -highlight"
+                />
             </div>
         )
     }
