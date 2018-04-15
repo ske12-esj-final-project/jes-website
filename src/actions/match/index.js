@@ -32,6 +32,20 @@ const getMatchFailed = err => ({
     error: err
 })
 
+const getMatchKillStart = () => ({
+    type: ACTION.GET_MATCH_KILL_START
+})
+
+const getMatchKillSuccess = kills => ({
+    type: ACTION.GET_MATCH_KILL_SUCCESS,
+    kills: kills
+})
+
+const getMatchKillFailed = err => ({
+    type: ACTION.GET_MATCH_KILL_FAILED,
+    error: err
+})
+
 export const getAllMatches = () => (dispatch) => {
     dispatch(getAllMatchesStart())
     return axios.get(API.MATCH)
@@ -56,4 +70,17 @@ export const getMatch = (matchID) => (dispatch) => {
             dispatch(getMatchFailed(err))
             return err
         })
+}
+
+export const getMatchKill = (matchID) => (dispatch) => {
+    dispatch(getMatchKillStart())
+    return axios.get(API.MATCH + '/' + matchID + '/kills')
+    .then(res => {
+        dispatch(getMatchKillSuccess(res.data))
+        return res
+    })
+    .catch(err => {
+        dispatch(getMatchKillFailed(err))
+        return err
+    })
 }

@@ -21,6 +21,12 @@ const matchReducer = (state = initialState, action) => {
                 match: action.match
             }
 
+        case ACTION.GET_MATCH_KILL_SUCCESS:
+            return {
+                ...state,
+                kills: action.kills
+            }
+
         default:
             return { ...state }
     }
