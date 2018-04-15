@@ -52,8 +52,14 @@ class Insights extends Component {
                         },
                         {
                             Header: 'Started on',
-                            id: 'dateCreated',
-                            accessor: d => moment(new Date(d.dateCreated)).fromNow()
+                            accessor: 'dateCreated',
+                            Cell: props => <span>{ moment(props.value).fromNow() }</span>,
+                            sortMethod: (a, b) => {
+                                a = moment(a)
+                                b = moment(b)
+                                console.log(a, b)
+                                return b > a ? 1 : -1
+                            }
                         }
                     ]}
                     getTdProps={(state, rowInfo) => {
@@ -63,6 +69,12 @@ class Insights extends Component {
                             }
                         }
                     }}
+                    defaultSorted={[
+                        {
+                            id: 'dateCreated',
+                            asc: true
+                        }
+                    ]}
                     defaultPageSize={10}
                     className="-striped -highlight"
                 />
