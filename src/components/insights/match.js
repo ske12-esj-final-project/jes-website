@@ -3,8 +3,39 @@ import { connect } from 'react-redux'
 import { getMatch, getMatchKill } from '../../actions/match'
 
 import ReactTable from 'react-table'
+import styled from 'styled-components'
+import map from '../../map.png'
+import cross from '../../cross.png'
 import 'react-table/react-table.css'
 import moment from 'moment'
+
+const MinimapSection = styled.div`
+    position: relative;
+    overflow: hidden;
+`
+
+const Minimap = styled.img`
+    position: relative;
+    width: 100%;
+    height: auto;
+`
+
+const IconGroup = styled.div`
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 102;
+`
+
+const Icon = styled.img`
+    position: absolute;
+    left: ${ props => props.x }%;
+    bottom: ${ props => props.z }%;
+    width: 24px;
+    height: 24px;
+`
 
 class MatchInfo extends Component {
 
@@ -44,6 +75,21 @@ class MatchInfo extends Component {
                     defaultPageSize={10}
                     className="-striped -highlight"
                 />
+
+                <MinimapSection>
+                    <Minimap src={ map } alt="Minimap"/>
+                    <IconGroup>
+                        {
+                            this.props.matches.kills.map((kill, index) => {
+                                return <Icon key={ index } src={ cross }
+                                    x={ 48 + kill.victimPos.x / 4 } 
+                                    z={ 48 + kill.victimPos.z / 4 } 
+                                    alt="Cross"/>
+                            })
+                        }
+                    </IconGroup>
+                </MinimapSection>
+                
             </div>
         )
     }

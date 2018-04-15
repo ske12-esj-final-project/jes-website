@@ -4,7 +4,8 @@ const ACTION = constants.ACTION
 
 let initialState = {
     matches: [],
-    match: {}
+    match: {},
+    kills: []
 }
 
 const matchReducer = (state = initialState, action) => {
