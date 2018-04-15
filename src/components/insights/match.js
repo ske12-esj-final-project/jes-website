@@ -33,8 +33,8 @@ const Icon = styled.img`
     position: absolute;
     left: ${ props => props.x }%;
     bottom: ${ props => props.z }%;
-    width: 24px;
-    height: 24px;
+    width: 2%;
+    height: 2%;
 `
 
 class MatchInfo extends Component {
