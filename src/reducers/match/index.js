@@ -3,7 +3,8 @@ import constants from '../../constants'
 const ACTION = constants.ACTION
 
 let initialState = {
-    matches: []
+    matches: [],
+    match: {}
 }
 
 const matchReducer = (state = initialState, action) => {
@@ -12,6 +13,12 @@ const matchReducer = (state = initialState, action) => {
             return {
                 ...state,
                 matches: action.matches
+            }
+
+        case ACTION.GET_MATCH_SUCCESS:
+            return {
+                ...state,
+                match: action.match
             }
 
         default:

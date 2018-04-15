@@ -18,6 +18,20 @@ const getAllMatchesFailed = err => ({
     error: err
 })
 
+const getMatchStart = () => ({
+    type: ACTION.GET_MATCH_START
+})
+
+const getMatchSuccess = match => ({
+    type: ACTION.GET_MATCH_SUCCESS,
+    match: match
+})
+
+const getMatchFailed = err => ({
+    type: ACTION.GET_MATCH_FAILED,
+    error: err
+})
+
 export const getAllMatches = () => (dispatch) => {
     dispatch(getAllMatchesStart())
     return axios.get(API.MATCH)
@@ -27,6 +41,19 @@ export const getAllMatches = () => (dispatch) => {
         })
         .catch(err => {
             dispatch(getAllMatchesFailed(err))
+            return err
+        })
+}
+
+export const getMatch = (matchID) => (dispatch) => {
+    dispatch(getMatchStart())
+    return axios.get(API.MATCH + '/' + matchID)
+        .then(res => {
+            dispatch(getMatchSuccess(res.data))
+            return res
+        })
+        .catch(err => {
+            dispatch(getMatchFailed(err))
             return err
         })
 }

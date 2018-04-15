@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
 import { connect } from 'react-redux'
+import _ from 'lodash'
 import { getAllMatches } from '../../actions/match'
 import { getAllPlayers } from '../../actions/player'
 
@@ -46,7 +46,7 @@ class Insights extends Component {
                             accessor: '_id'
                         },
                         {
-                            Header: 'Players',
+                            Header: '# Players',
                             id: 'players',
                             accessor: d => _.size(d.players)
                         },
@@ -56,6 +56,13 @@ class Insights extends Component {
                             accessor: d => moment(new Date(d.dateCreated)).fromNow()
                         }
                     ]}
+                    getTdProps={(state, rowInfo) => {
+                        return {
+                            onClick: () => {
+                                this.props.history.push('/insights/matches/' + rowInfo.row._id)
+                            }
+                        }
+                    }}
                     defaultPageSize={10}
                     className="-striped -highlight"
                 />
@@ -65,7 +72,6 @@ class Insights extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         match: state.match,
         player: state.player
