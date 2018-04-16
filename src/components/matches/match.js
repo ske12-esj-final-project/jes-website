@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getMatch, getMatchKill } from '../../actions/match'
-
+import { PageContent, LayoutContent, Header } from '../stylesheets'
 import ReactTable from 'react-table'
 import styled from 'styled-components'
 import map from '../../map.png'
@@ -12,6 +12,7 @@ import moment from 'moment'
 const MinimapSection = styled.div`
     position: relative;
     overflow: hidden;
+    padding: 
 `
 
 const Minimap = styled.img`
@@ -51,46 +52,49 @@ class MatchInfo extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Match { this.props.match.params.id }</h1>
-                <h2>Duration { this.props.matches.match.duration } seconds</h2>
-                <h2>Started on { this.getDateFromNow(this.props.matches.match.dateCreated) }</h2>
+            <PageContent>
+                <LayoutContent>
+                    <Header>Match { this.props.match.params.id }</Header>
+                    <h2>Duration { this.props.matches.match.duration } seconds</h2>
+                    <h2>Started on { this.getDateFromNow(this.props.matches.match.dateCreated) }</h2>
 
-                <ReactTable 
-                    data={ this.props.matches.kills }
-                    columns={[
-                        {
-                            Header: 'Killer',
-                            accessor: 'playerID'
-                        },
-                        {
-                            Header: 'Weapon used',
-                            accessor: 'weaponUsed'
-                        },
-                        {
-                            Header: 'Victim',
-                            accessor: 'victimID'
-                        },
-                    ]}
-                    defaultPageSize={10}
-                    className="-striped -highlight"
-                />
+                    <ReactTable 
+                        data={ this.props.matches.kills }
+                        columns={[
+                            {
+                                Header: 'Killer',
+                                accessor: 'playerID'
+                            },
+                            {
+                                Header: 'Weapon used',
+                                accessor: 'weaponUsed'
+                            },
+                            {
+                                Header: 'Victim',
+                                accessor: 'victimID'
+                            },
+                        ]}
+                        defaultPageSize={10}
+                        className="-striped -highlight"
+                    />
 
-                <MinimapSection>
-                    <Minimap src={ map } alt="Minimap"/>
-                    <IconGroup>
-                        {
-                            this.props.matches.kills.map((kill, index) => {
-                                return <Icon key={ index } src={ cross }
-                                    x={ 48 + kill.victimPos.x / 4 } 
-                                    z={ 48 + kill.victimPos.z / 4 } 
-                                    alt="Cross"/>
-                            })
-                        }
-                    </IconGroup>
-                </MinimapSection>
+                    <MinimapSection>
+                        <Minimap src={ map } alt="Minimap"/>
+                        <IconGroup>
+                            {
+                                this.props.matches.kills.map((kill, index) => {
+                                    return <Icon key={ index } src={ cross }
+                                        x={ 48 + kill.victimPos.x / 4 } 
+                                        z={ 48 + kill.victimPos.z / 4 } 
+                                        alt="Cross"/>
+                                })
+                            }
+                        </IconGroup>
+                    </MinimapSection>
                 
-            </div>
+                </LayoutContent>
+            </PageContent>
+                        
         )
     }
 }

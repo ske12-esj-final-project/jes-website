@@ -1,13 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
+import { PageContent, LayoutContent, Header, Subheader } from '../stylesheets'
+
+const DownloadButton = styled.a`
+    display: inline-block;
+    color: white;
+    background: #00C853;
+    padding: 0.5rem 0;
+    margin: 0.5rem 1rem;
+    width: 11rem;
+    border: 2px solid white;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+`
 
 const Home = props => (
-    <div>
-        <h1>Welcome to JES</h1>
-        <p>Download game</p>
-        <button>Windows</button>
-        <button>macOS</button>
-    </div>
+    <PageContent>
+        <LayoutContent>
+            <Header>Just Enjoy Shooting</Header>
+            <Subheader>Choose platform</Subheader>
+            <DownloadButton>Windows</DownloadButton>
+            <DownloadButton>macOS</DownloadButton>
+        </LayoutContent>
+    </PageContent>
 )
 
 const mapStateToProps = (state) => {

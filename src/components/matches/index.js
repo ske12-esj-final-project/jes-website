@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { PageContent, LayoutContent, Header } from '../stylesheets'
 import _ from 'lodash'
 import { getAllMatches } from '../../actions/match'
 
@@ -15,48 +16,50 @@ class Matches extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Matches</h1>
-                <ReactTable 
-                    data={this.props.matches.matches} 
-                    columns={[
-                        {
-                            Header: 'ID',
-                            accessor: '_id'
-                        },
-                        {
-                            Header: '# Players',
-                            id: 'players',
-                            accessor: d => _.size(d.players)
-                        },
-                        {
-                            Header: 'Started on',
-                            accessor: 'dateCreated',
-                            Cell: props => <span>{ moment(props.value).fromNow() }</span>,
-                            sortMethod: (a, b) => {
-                                a = moment(a)
-                                b = moment(b)
-                                return b > a ? 1 : -1
+            <PageContent>
+                <LayoutContent>
+                    <Header>Matches</Header>
+                    <ReactTable 
+                        data={this.props.matches.matches} 
+                        columns={[
+                            {
+                                Header: 'ID',
+                                accessor: '_id'
+                            },
+                            {
+                                Header: '# Players',
+                                id: 'players',
+                                accessor: d => _.size(d.players)
+                            },
+                            {
+                                Header: 'Started on',
+                                accessor: 'dateCreated',
+                                Cell: props => <span>{ moment(props.value).fromNow() }</span>,
+                                sortMethod: (a, b) => {
+                                    a = moment(a)
+                                    b = moment(b)
+                                    return b > a ? 1 : -1
+                                }
                             }
-                        }
-                    ]}
-                    getTdProps={(state, rowInfo) => {
-                        return {
-                            onClick: () => {
-                                this.props.history.push('/matches/' + rowInfo.row._id)
+                        ]}
+                        getTdProps={(state, rowInfo) => {
+                            return {
+                                onClick: () => {
+                                    this.props.history.push('/matches/' + rowInfo.row._id)
+                                }
                             }
-                        }
-                    }}
-                    defaultSorted={[
-                        {
-                            id: 'dateCreated',
-                            asc: true
-                        }
-                    ]}
-                    defaultPageSize={10}
-                    className="-striped -highlight"
-                />
-            </div>
+                        }}
+                        defaultSorted={[
+                            {
+                                id: 'dateCreated',
+                                asc: true
+                            }
+                        ]}
+                        defaultPageSize={10}
+                        className="-striped -highlight"
+                    />
+                </LayoutContent>
+            </PageContent>
         )
     }
 }

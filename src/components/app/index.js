@@ -220,6 +220,7 @@ class App extends Component {
                     <Route exact path="/" component={ Home }></Route>
                     <Route exact path="/leaderboard" component={ Leaderboard }></Route>
                     <Route exact path="/matches" component={ Matches }></Route>
+                    <Route exact path="/about" component={ About }></Route>
                     <Route path="/matches/:id" component={ MatchInfo }></Route>
                 </main>
             </LayoutContainer>

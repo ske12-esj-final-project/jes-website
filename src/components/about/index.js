@@ -1,9 +1,12 @@
 import React from 'react'
+import { PageContent, LayoutContent, Header } from '../stylesheets'
 
 const About = () => (
-    <div>
-        <h1>About</h1>
-    </div>
+    <PageContent>
+        <LayoutContent>
+            <Header>About</Header>
+        </LayoutContent>
+    </PageContent>
 )
 
 export default About

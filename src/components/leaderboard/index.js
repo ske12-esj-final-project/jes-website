@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { PageContent, LayoutContent, Header } from '../stylesheets'
 import { getAllPlayers } from '../../actions/player'
 
 import ReactTable from 'react-table'
@@ -13,24 +14,26 @@ class Leaderboard extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Leaderboard</h1>
-                <ReactTable 
-                    data={this.props.player.players} 
-                    columns={[
-                        {
+            <PageContent>
+                <LayoutContent>
+                <Header>Leaderboard</Header>
+                    <ReactTable 
+                        data={this.props.player.players} 
+                        columns={[
+                            {
                             Header: 'Username',
                             accessor: 'username'
-                        },
-                        {
+                            },
+                            {
                             Header: 'Score',
                             accessor: 'score'
-                        },
-                    ]}
-                    defaultPageSize={10}
-                    className="-striped -highlight"
-                />
-            </div>
+                            },
+                        ]}
+                        defaultPageSize={10}
+                        className="-striped -highlight"
+                    />
+                </LayoutContent>
+            </PageContent>
         )
     }
 }
