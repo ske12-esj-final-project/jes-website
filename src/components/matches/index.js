@@ -2,44 +2,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import { getAllMatches } from '../../actions/match'
-import { getAllPlayers } from '../../actions/player'
 
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import moment from 'moment'
 
-class Insights extends Component {
+class Matches extends Component {
 
     componentDidMount() {
         this.props.getAllMatches()
-        this.props.getAllPlayers()
     }
 
     render() {
         return (
             <div>
-                <h1>Insights</h1>
-                
-                <h2>Leaderboard</h2>
+                <h1>Matches</h1>
                 <ReactTable 
-                    data={this.props.player.players} 
-                    columns={[
-                        {
-                            Header: 'Username',
-                            accessor: 'username'
-                        },
-                        {
-                            Header: 'Score',
-                            accessor: 'score'
-                        },
-                    ]}
-                    defaultPageSize={10}
-                    className="-striped -highlight"
-                />
-                
-                <h2>Matches</h2>
-                <ReactTable 
-                    data={this.props.match.matches} 
+                    data={this.props.matches.matches} 
                     columns={[
                         {
                             Header: 'ID',
@@ -65,7 +44,7 @@ class Insights extends Component {
                     getTdProps={(state, rowInfo) => {
                         return {
                             onClick: () => {
-                                this.props.history.push('/insights/matches/' + rowInfo.row._id)
+                                this.props.history.push('/matches/' + rowInfo.row._id)
                             }
                         }
                     }}
@@ -85,9 +64,8 @@ class Insights extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        match: state.match,
-        player: state.player
+        matches: state.match,
     }
 }
 
-export default connect(mapStateToProps, { getAllMatches, getAllPlayers })(Insights)
+export default connect(mapStateToProps, { getAllMatches })(Matches)
