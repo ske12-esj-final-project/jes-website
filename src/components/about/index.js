@@ -1,5 +1,5 @@
 import React from 'react'
-import { PageContent, LayoutContent, Header } from '../stylesheets'
+import { PageContent, LayoutContent, Header } from '../stylesheets/common'
 
 const About = () => (
     <PageContent>

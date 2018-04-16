@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { PageContent, LayoutContent, Header, Subheader } from '../stylesheets'
+import { PageContent, LayoutContent, Header, Subheader } from '../stylesheets/common'
 
 const DownloadButton = styled.a`
     display: inline-block;
+    font-size: 2rem;
     color: white;
     background: #00C853;
     padding: 0.5rem 0;

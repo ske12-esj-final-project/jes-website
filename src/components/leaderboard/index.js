@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { PageContent, LayoutContent, Header } from '../stylesheets'
+import { PageContent, LayoutContent, Header } from '../stylesheets/common'
 import { getAllPlayers } from '../../actions/player'
 
 import ReactTable from 'react-table'

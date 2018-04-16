@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { PageContent, LayoutContent, Header } from '../stylesheets'
+import { PageContent, LayoutContent, Header } from '../stylesheets/common'
 import _ from 'lodash'
 import { getAllMatches } from '../../actions/match'
 

@@ -23,11 +23,10 @@ const Navbar = styled.nav`
     z-index: 3;
     width: 100%;
     height: 2.77rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 0.83rem;
-    background: rgb(219,112,147);
+    background: rgb(253,184,5);
     transition: background 300ms ease-out;
-    color: white;
 `
 const NavbarContent = styled.div`
     @media (max-width: 62.5rem) {
@@ -46,7 +45,7 @@ const NavbarContent = styled.div`
     -webkit-justify-content: space-between;
     justify-content: space-between;
     -ms-flex-pack: justify;
-    padding: 0 1.11rem;
+    padding: 0.5rem 1.11rem;
 `
 const NavbarLeft = styled.div`
     display: -webkit-box;
@@ -83,7 +82,6 @@ const NavbarLink = styled(Link)`
     display: inline-block;
     transition: opacity 0.2s,transform 0.2s;
     cursor: pointer;
-    color: white;
     text-decoration: none;
     -webkit-letter-spacing: 0.02rem;
     -moz-letter-spacing: 0.02rem;
@@ -160,7 +158,7 @@ const SidebarMenu = styled.div`
 const SubMenu = styled(Link)`
     display: block;
     margin: 2.22rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: normal;
     cursor: pointer;
     text-decoration: none;

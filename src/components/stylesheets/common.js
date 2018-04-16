@@ -1,4 +1,19 @@
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
+
+injectGlobal`
+    @font-face {
+        font-family: 'Motion Control';
+        src: url('/MotionControl-Bold.ttf') format('truetype');
+    }
+
+    body {
+        font-family: 'Motion Control';
+    }
+
+    h1,h2,h3,h4,h5,h6,p,a {
+        color: white;
+    }
+`
 
 export const PageContent = styled.div`
     display: -webkit-box;
@@ -16,6 +31,7 @@ export const PageContent = styled.div`
     -ms-flex-align: center;
     align-items: center;
     text-align: center;
+    background-color: #555;
 `
 
 export const LayoutContent = styled.div`
@@ -32,12 +48,11 @@ export const LayoutContent = styled.div`
 export const Header = styled.h1`
     display: block;
     width: 100%;
-    font-size: 2.33rem;
+    font-size: 3rem;
     text-align: center;
 `
 
 export const Subheader = styled.h2`
-    font-size: 1.66rem;
-    font-weight: 100;
+    font-size: 2.33rem;
     text-align: center;
 `

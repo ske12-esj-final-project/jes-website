@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getMatch, getMatchKill } from '../../actions/match'
-import { PageContent, LayoutContent, Header } from '../stylesheets'
+import { PageContent, LayoutContent, Header } from '../stylesheets/common'
 import ReactTable from 'react-table'
 import styled from 'styled-components'
 import map from '../../map.png'
