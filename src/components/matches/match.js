@@ -4,10 +4,8 @@ import { getMatch, getMatchKill } from '../../actions/match'
 import { PageContent, LayoutContent, Header } from '../stylesheets/common'
 import ReactTable from 'react-table'
 import styled from 'styled-components'
-import map from '../../map.png'
-import cross from '../../cross.png'
-import 'react-table/react-table.css'
 import moment from 'moment'
+import _ from 'lodash'
 
 const MinimapSection = styled.div`
     position: relative;
@@ -38,6 +36,30 @@ const Icon = styled.img`
     height: 2%;
 `
 
+const Killfeed = styled(ReactTable)`
+    text-align: center;
+
+    .rt-td {
+        margin: auto;
+    }
+
+    .rt-th {
+        display: none;
+    }
+`
+
+const Killer = styled.h2`
+    font-size: 1.33rem;
+`
+
+const WeaponImage = styled.object`
+    width: 100%;
+`
+
+const Victim = styled.h2`
+    font-size: 1.33rem;
+`
+
 class MatchInfo extends Component {
 
     componentDidMount() {
@@ -58,32 +80,43 @@ class MatchInfo extends Component {
                     <h2>Duration { this.props.matches.match.duration } seconds</h2>
                     <h2>Started on { this.getDateFromNow(this.props.matches.match.dateCreated) }</h2>
 
-                    <ReactTable 
-                        data={ this.props.matches.kills }
-                        columns={[
-                            {
-                                Header: 'Killer',
-                                accessor: 'playerID'
-                            },
-                            {
-                                Header: 'Weapon used',
-                                accessor: 'weaponUsed'
-                            },
-                            {
-                                Header: 'Victim',
-                                accessor: 'victimID'
-                            },
-                        ]}
-                        defaultPageSize={10}
-                        className="-striped -highlight"
-                    />
+                    {
+                        _.size(this.props.matches.kills) > 0 ? (
+                            <Killfeed 
+                            data={ this.props.matches.kills }
+                            columns={[
+                                {
+                                    Header: 'Killer',
+                                    accessor: 'playerID',
+                                    Cell: props => <Killer>{ props.value }</Killer>
+                                },
+                                {
+                                    Header: 'Weapon used',
+                                    accessor: 'weaponUsed',
+                                    Cell: props => <WeaponImage type="image/svg+xml"
+                                        data={ `/guns/${ props.value }.svg` } 
+                                        />
+                                },
+                                {
+                                    Header: 'Victim',
+                                    accessor: 'victimID',
+                                    Cell: props => <Victim>{ props.value }</Victim>
+                                },
+                            ]}
+                            pageSize={ _.size(this.props.matches.kills) }
+                            showPagination={false}
+                            />
+                        ) : (
+                            <h2>No killfeed found</h2>
+                        )
+                    }
 
                     <MinimapSection>
-                        <Minimap src={ map } alt="Minimap"/>
+                        <Minimap src="/map.png" alt="Minimap"/>
                         <IconGroup>
                             {
                                 this.props.matches.kills.map((kill, index) => {
-                                    return <Icon key={ index } src={ cross }
+                                    return <Icon key={ index } src="/cross.png"
                                         x={ 48 + kill.victimPos.x / 4 } 
                                         z={ 48 + kill.victimPos.z / 4 } 
                                         alt="Cross"/>
@@ -102,6 +135,7 @@ class MatchInfo extends Component {
 const mapStateToProps = (state) => {
     return {
         matches: state.match,
+        player: state.player
     }
 }
 

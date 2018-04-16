@@ -1,4 +1,5 @@
 import styled, { injectGlobal } from 'styled-components'
+import ReactTable from 'react-table'
 
 injectGlobal`
     @font-face {
@@ -6,7 +7,7 @@ injectGlobal`
         src: url('/MotionControl-Bold.ttf') format('truetype');
     }
 
-    body {
+    * {
         font-family: 'Motion Control';
     }
 
@@ -31,7 +32,7 @@ export const PageContent = styled.div`
     -ms-flex-align: center;
     align-items: center;
     text-align: center;
-    background-color: #555;
+    background-color: #444;
 `
 
 export const LayoutContent = styled.div`
@@ -50,9 +51,22 @@ export const Header = styled.h1`
     width: 100%;
     font-size: 3rem;
     text-align: center;
+    word-wrap: break-word;
+    color: #444;
+    background: rgb(253,184,5);
 `
 
 export const Subheader = styled.h2`
     font-size: 2.33rem;
     text-align: center;
+`
+
+export const MyTable = styled(ReactTable)`
+    background: white;
+    font-size: 1.33rem;
+    border: 5px solid rgb(253,184,5) !important;
+
+    .rt-td {
+        cursor: pointer;
+    }
 `

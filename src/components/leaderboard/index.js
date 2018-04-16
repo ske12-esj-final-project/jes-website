@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { PageContent, LayoutContent, Header } from '../stylesheets/common'
+import { PageContent, LayoutContent, Header, MyTable } from '../stylesheets/common'
 import { getAllPlayers } from '../../actions/player'
-
-import ReactTable from 'react-table'
-import 'react-table/react-table.css'
 
 class Leaderboard extends Component {
 
@@ -17,7 +14,7 @@ class Leaderboard extends Component {
             <PageContent>
                 <LayoutContent>
                 <Header>Leaderboard</Header>
-                    <ReactTable 
+                    <MyTable 
                         data={this.props.player.players} 
                         columns={[
                             {

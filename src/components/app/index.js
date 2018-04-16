@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 import Home from '../home'
@@ -25,7 +25,7 @@ const Navbar = styled.nav`
     height: 2.77rem;
     font-size: 1.5rem;
     font-weight: 0.83rem;
-    background: rgb(253,184,5);
+    background: white;
     transition: background 300ms ease-out;
 `
 const NavbarContent = styled.div`
@@ -75,7 +75,7 @@ const NavbarRight = styled.div`
     -ms-flex-pack: end;
     justify-content: flex-end;
 `
-const NavbarLink = styled(Link)`
+const NavbarLink = styled(NavLink)`
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
@@ -87,6 +87,11 @@ const NavbarLink = styled(Link)`
     -moz-letter-spacing: 0.02rem;
     -ms-letter-spacing: 0.02rem;
     letter-spacing: 0.02rem;
+    color: #444;
+
+    &.active {
+        color: rgb(253,184,5);
+    }
 `
 const NavbarSeparator = styled.div`
     -webkit-flex: 0 0 auto;
@@ -155,7 +160,7 @@ const SidebarMenu = styled.div`
     padding-top: 2rem;
 `
 
-const SubMenu = styled(Link)`
+const SubMenu = styled(NavLink)`
     display: block;
     margin: 2.22rem;
     font-size: 1.5rem;
@@ -163,6 +168,10 @@ const SubMenu = styled(Link)`
     cursor: pointer;
     text-decoration: none;
     color: inherit;
+
+    .active {
+        color: rgb(253,184,5);
+    }
 `
 
 class App extends Component {
@@ -187,13 +196,13 @@ class App extends Component {
                     <Navbar>
                         <NavbarContent>
                             <NavbarLeft>
-                                <NavbarLink to="/">Home</NavbarLink>
+                                <NavbarLink activeClassName='active' to="/">Home</NavbarLink>
                                 <NavbarSeparator />
-                                <NavbarLink to="/leaderboard">Leaderboard</NavbarLink>       
+                                <NavbarLink activeClassName='active' to="/leaderboard">Leaderboard</NavbarLink>       
                                 <NavbarSeparator />
-                                <NavbarLink to="/matches">Matches</NavbarLink>
+                                <NavbarLink activeClassName='active' to="/matches">Matches</NavbarLink>
                                 <NavbarSeparator />
-                                <NavbarLink to="/about">About</NavbarLink>
+                                <NavbarLink activeClassName='active' to="/about">About</NavbarLink>
                             </NavbarLeft>
         
                             <NavbarRight>
