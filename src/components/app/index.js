@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -15,7 +15,6 @@ const LayoutContainer = styled.div`
     
     position: relative;
     overflow: auto;
-    padding-left: 16.66rem;
 `
 const Navbar = styled.nav`
     position: fixed;
@@ -137,7 +136,7 @@ const Sidebar = styled.nav`
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
-    display: block;
+    display: ${ props => props.showSidebar ? 'block' : 'none' };
     z-index: 1;
     left: 0;
     top: 2.77rem;
@@ -152,7 +151,7 @@ const Sidebar = styled.nav`
     transition: transform 150ms ease-out;
 `
 const SidebarMenu = styled.div`
-    display: block;
+    display: 'block'
     box-sizing: border-box;
     height: 100%;
     padding-top: 2rem;
@@ -168,46 +167,64 @@ const SubMenu = styled(Link)`
     color: inherit;
 `
 
-const App = () => (
-    <LayoutContainer>
-        <header>
-            <Navbar>
-                <NavbarContent>
-                    <NavbarLeft>
-                        <NavbarLink to="/">Home</NavbarLink>
-                        <NavbarSeparator />
-                        <NavbarLink to="/leaderboard">Leaderboard</NavbarLink>       
-                        <NavbarSeparator />
-                        <NavbarLink to="/matches">Matches</NavbarLink>
-                        <NavbarSeparator />
-                        <NavbarLink to="/about">About</NavbarLink>
-                    </NavbarLeft>
+class App extends Component {
 
-                    <NavbarRight>
-                    <NavbarLink to="/">GitHub Logo</NavbarLink>                        
-                    </NavbarRight>
-                </NavbarContent>
+    constructor(props) {
+        super(props)
+        this.state = {
+            show: false
+        }
+    }
 
-                <MobileNavbar>
-                    <NavbarButton>Click me</NavbarButton>
-                </MobileNavbar>
-            </Navbar>
-            <Sidebar>
-                <SidebarMenu>
-                    <SubMenu to="/leaderboard">Leaderboard</SubMenu>
-                    <SubMenu to="/matches">Matches</SubMenu>
-                    <SubMenu to="/about">About</SubMenu>
-                </SidebarMenu>    
-            </Sidebar>
-        </header>
+    toggleSidebar() {
+        this.setState({
+            show: !this.state.show
+        })
+    }
 
-        <main>
-            <Route exact path="/" component={ Home }></Route>
-            <Route exact path="/leaderboard" component={ Leaderboard }></Route>
-            <Route exact path="/matches" component={ Matches }></Route>
-            <Route path="/matches/:id" component={ MatchInfo }></Route>
-        </main>
-    </LayoutContainer>
-)
+    render() {
+        return (
+            <LayoutContainer>
+                <header>
+                    <Navbar>
+                        <NavbarContent>
+                            <NavbarLeft>
+                                <NavbarLink to="/">Home</NavbarLink>
+                                <NavbarSeparator />
+                                <NavbarLink to="/leaderboard">Leaderboard</NavbarLink>       
+                                <NavbarSeparator />
+                                <NavbarLink to="/matches">Matches</NavbarLink>
+                                <NavbarSeparator />
+                                <NavbarLink to="/about">About</NavbarLink>
+                            </NavbarLeft>
+        
+                            <NavbarRight>
+                            <NavbarLink to="/">GitHub Logo</NavbarLink>                        
+                            </NavbarRight>
+                        </NavbarContent>
+        
+                        <MobileNavbar>
+                            <NavbarButton onClick={() => this.toggleSidebar()}>Click me</NavbarButton>
+                        </MobileNavbar>
+                    </Navbar>
+                    <Sidebar showSidebar={ this.state.show }>
+                        <SidebarMenu>
+                            <SubMenu to="/leaderboard">Leaderboard</SubMenu>
+                            <SubMenu to="/matches">Matches</SubMenu>
+                            <SubMenu to="/about">About</SubMenu>
+                        </SidebarMenu>    
+                    </Sidebar>
+                </header>
+        
+                <main>
+                    <Route exact path="/" component={ Home }></Route>
+                    <Route exact path="/leaderboard" component={ Leaderboard }></Route>
+                    <Route exact path="/matches" component={ Matches }></Route>
+                    <Route path="/matches/:id" component={ MatchInfo }></Route>
+                </main>
+            </LayoutContainer>
+        )
+    }
+}
 
 export default App

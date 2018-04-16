@@ -36,7 +36,6 @@ class Matches extends Component {
                             sortMethod: (a, b) => {
                                 a = moment(a)
                                 b = moment(b)
-                                console.log(a, b)
                                 return b > a ? 1 : -1
                             }
                         }
