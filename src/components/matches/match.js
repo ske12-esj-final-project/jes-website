@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getMatch, getMatchKill } from '../../actions/match'
+import { Helmet } from 'react-helmet'
 import { PageContent, LayoutContent, Header } from '../stylesheets/common'
 import ReactTable from 'react-table'
 import styled from 'styled-components'
@@ -75,6 +76,9 @@ class MatchInfo extends Component {
     render() {
         return (
             <PageContent>
+                <Helmet>
+                    <title>Match { this.props.match.params.id } - Just Enjoy Shooting</title>
+                </Helmet>
                 <LayoutContent>
                     <Header>Match { this.props.match.params.id }</Header>
                     <h2>Duration { this.props.matches.match.duration } seconds</h2>

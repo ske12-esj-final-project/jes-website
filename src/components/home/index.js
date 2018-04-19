@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import { PageContent, LayoutContent, Header, Subheader } from '../stylesheets/common'
 
 const DownloadButton = styled.a`
@@ -19,6 +20,9 @@ const DownloadButton = styled.a`
 
 const Home = props => (
     <PageContent>
+        <Helmet>
+            <title>JES - Just Enjoy Shooting</title>
+        </Helmet>
         <LayoutContent>
             <Header>Just Enjoy Shooting</Header>
             <Subheader>Choose platform</Subheader>
