@@ -22,7 +22,7 @@ const Navbar = styled.nav`
     box-sizing: border-box;
     z-index: 3;
     width: 100%;
-    height: 2.77rem;
+    height: 3.66rem;
     font-size: 1.5rem;
     font-weight: 0.83rem;
     background: white;
@@ -45,7 +45,7 @@ const NavbarContent = styled.div`
     -webkit-justify-content: space-between;
     justify-content: space-between;
     -ms-flex-pack: justify;
-    padding: 0.5rem 1.11rem;
+    padding: 0 1.11rem;
 `
 const NavbarLeft = styled.div`
     display: -webkit-box;
@@ -92,6 +92,17 @@ const NavbarLink = styled(NavLink)`
     &.active {
         color: rgb(253,184,5);
     }
+`
+const NavbarLogo = styled.div`
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(/logo.svg);
+    width: 7.33rem;
+    height: 3.66rem;
 `
 const NavbarSeparator = styled.div`
     -webkit-flex: 0 0 auto;
@@ -196,7 +207,9 @@ class App extends Component {
                     <Navbar>
                         <NavbarContent>
                             <NavbarLeft>
-                                <NavbarLink activeClassName='active' to="/">Home</NavbarLink>
+                                <NavbarLink activeClassName='active' to="/">
+                                    <NavbarLogo />
+                                </NavbarLink>
                                 <NavbarSeparator />
                                 <NavbarLink activeClassName='active' to="/leaderboard">Leaderboard</NavbarLink>       
                                 <NavbarSeparator />
@@ -212,6 +225,10 @@ class App extends Component {
         
                         <MobileNavbar>
                             <NavbarButton onClick={() => this.toggleSidebar()}>Click me</NavbarButton>
+                            <NavbarLink to="/">
+                                <NavbarLogo />
+                            </NavbarLink>
+                            <NavbarButton>GitHub Logo</NavbarButton>
                         </MobileNavbar>
                     </Navbar>
                     <Sidebar showSidebar={ this.state.show }>

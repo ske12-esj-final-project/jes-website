@@ -11,7 +11,11 @@ injectGlobal`
         font-family: 'Motion Control';
     }
 
-    h1,h2,h3,h4,h5,h6,p,a {
+    p {
+        font-family: 'Arial';
+    }
+
+    h1,h2,h3,h4,h5,h6,a {
         color: white;
     }
 `
