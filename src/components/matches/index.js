@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { PageContent, LayoutContent, Header, MyTable } from '../stylesheets/common'
+import { PageContent, LayoutContent, Header, MyTable, Theme } from '../stylesheets/common'
 import _ from 'lodash'
 import { getAllMatches } from '../../actions/match'
 
@@ -22,7 +22,7 @@ class Matches extends Component {
                     <title>Matches - Just Enjoy Shooting</title>
                 </Helmet>
                 <LayoutContent>
-                    <Header>Matches</Header>
+                    <Header theme={ Theme.Main }>Matches</Header>
                     <MyTable 
                         data={this.props.matches.matches} 
                         columns={[

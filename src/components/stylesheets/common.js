@@ -4,7 +4,12 @@ import ReactTable from 'react-table'
 injectGlobal`
     @font-face {
         font-family: 'Motion Control';
-        src: url('/MotionControl-Bold.ttf') format('truetype');
+        src: url(/fonts/MotionControl-Bold.ttf) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Roboto';
+        src: url(/fonts/Roboto-Regular.ttf) format('truetype');
     }
 
     * {
@@ -12,13 +17,15 @@ injectGlobal`
     }
 
     p {
-        font-family: 'Arial';
-    }
-
-    h1,h2,h3,h4,h5,h6,a {
-        color: white;
+        font-family: 'Roboto';
     }
 `
+
+export const Theme = {
+    Main: '#FDB805',
+    Dark: '#FFF',
+    Light: '#000'
+}
 
 export const PageContent = styled.div`
     display: -webkit-box;
@@ -40,9 +47,6 @@ export const PageContent = styled.div`
 `
 
 export const LayoutContent = styled.div`
-    width: 56.88%;
-    max-width: 100%;
-    margin: 0 auto;
     padding: 5rem 2.22rem 1.66rem 2.22rem;
     box-sizing: border-box;
     -webkit-transition: -webkit-transform 150ms ease-out;
@@ -53,19 +57,19 @@ export const LayoutContent = styled.div`
 export const Header = styled.h1`
     display: block;
     width: 100%;
-    font-size: 3rem;
+    font-size: 3.66rem;
     text-align: center;
     word-wrap: break-word;
-    color: #444;
-    background: rgb(253,184,5);
+    color: ${ props => props.theme };
 `
 
 export const Subheader = styled.h2`
     font-size: 2.33rem;
     text-align: center;
+    color: ${ props => props.theme };
 `
 
-export const MyTable = styled(ReactTable)`
+export const MyTable = styled(ReactTable) `
     background: white;
     font-size: 1.33rem;
     border: 5px solid rgb(253,184,5) !important;

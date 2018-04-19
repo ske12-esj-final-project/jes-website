@@ -2,16 +2,18 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getMatch, getMatchKill } from '../../actions/match'
 import { Helmet } from 'react-helmet'
-import { PageContent, LayoutContent, Header } from '../stylesheets/common'
+import { PageContent, LayoutContent, Header, Theme } from '../stylesheets/common'
 import ReactTable from 'react-table'
 import styled from 'styled-components'
 import moment from 'moment'
 import _ from 'lodash'
 
+const MatchDetail = styled.h2`
+    color: white;
+`
 const MinimapSection = styled.div`
     position: relative;
     overflow: hidden;
-    padding: 
 `
 
 const Minimap = styled.img`
@@ -80,9 +82,15 @@ class MatchInfo extends Component {
                     <title>Match { this.props.match.params.id } - Just Enjoy Shooting</title>
                 </Helmet>
                 <LayoutContent>
-                    <Header>Match { this.props.match.params.id }</Header>
-                    <h2>Duration { this.props.matches.match.duration } seconds</h2>
-                    <h2>Started on { this.getDateFromNow(this.props.matches.match.dateCreated) }</h2>
+                    <Header theme={ Theme.Main }>Match { this.props.match.params.id }</Header>
+
+                    <MatchDetail>
+                        Duration { this.props.matches.match.duration } seconds
+                    </MatchDetail>
+
+                    <MatchDetail>
+                        Started on { this.getDateFromNow(this.props.matches.match.dateCreated) }
+                    </MatchDetail>
 
                     {
                         _.size(this.props.matches.kills) > 0 ? (
@@ -111,16 +119,16 @@ class MatchInfo extends Component {
                             showPagination={false}
                             />
                         ) : (
-                            <h2>No killfeed found</h2>
+                            <MatchDetail>No kills found</MatchDetail>
                         )
                     }
 
                     <MinimapSection>
-                        <Minimap src="/map.png" alt="Minimap"/>
+                        <Minimap src="/images/map.png" alt="Minimap"/>
                         <IconGroup>
                             {
                                 this.props.matches.kills.map((kill, index) => {
-                                    return <Icon key={ index } src="/cross.png"
+                                    return <Icon key={ index } src="/images/cross.png"
                                         x={ 48 + kill.victimPos.x / 4 } 
                                         z={ 48 + kill.victimPos.z / 4 } 
                                         alt="Cross"/>
