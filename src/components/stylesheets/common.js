@@ -1,5 +1,6 @@
 import styled, { injectGlobal } from 'styled-components'
 import ReactTable from 'react-table'
+import 'react-table/react-table.css'
 
 injectGlobal`
     @font-face {
