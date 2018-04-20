@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { PageContent, LayoutContent, Subheader, Theme } from '../stylesheets/common'
+import constants from '../../constants'
 
 const Colors = {
     Red: '#F44336',
@@ -108,7 +109,9 @@ const Home = props => (
         <LayoutContent>
             <Logo src="/logo_large.svg" alt="JES"></Logo>
             <Subheader theme={ Theme.Dark }>Multiplayer FPS Battle Royale Game</Subheader>
-            <PlayButton>Start</PlayButton>
+            <PlayButton href={ constants.URL.DOWNLOAD } target="_blank">
+                Start
+            </PlayButton>
         </LayoutContent>
 
         <Article color={ Colors.Red }>

@@ -82,7 +82,6 @@ const NavbarLink = styled(NavLink)`
     display: inline-block;
     transition: opacity 0.2s,transform 0.2s;
     cursor: pointer;
-    text-decoration: none;
     -webkit-letter-spacing: 0.02rem;
     -moz-letter-spacing: 0.02rem;
     -ms-letter-spacing: 0.02rem;
@@ -177,7 +176,6 @@ const SubMenu = styled(NavLink)`
     font-size: 1.5rem;
     font-weight: normal;
     cursor: pointer;
-    text-decoration: none;
     color: inherit;
 
     .active {

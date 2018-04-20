@@ -15,6 +15,7 @@ injectGlobal`
 
     * {
         font-family: 'Motion Control';
+        text-decoration: none;
     }
 
     p {

@@ -21,5 +21,9 @@ export default {
         GET_ALL_PLAYERS_START: 'GET_ALL_PLAYERS_START',
         GET_ALL_PLAYERS_SUCCESS: 'GET_ALL_PLAYERS_SUCCESS',
         GET_ALL_PLAYERS_FAILED: 'GET_ALL_PLAYERS_FAILED'
+    },
+
+    URL: {
+        DOWNLOAD: 'https://drive.google.com/drive/folders/1lnWv3znzDHCTsEutdAIn9cbAzhXu-y4Z'
     }
 }

@@ -41,6 +41,7 @@ const Icon = styled.img`
 
 const Killfeed = styled(ReactTable)`
     text-align: center;
+    color: white;
 
     .rt-td {
         margin: auto;
