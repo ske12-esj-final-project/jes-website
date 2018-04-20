@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { PageContent, LayoutContent, Header, MyTable, Theme } from '../stylesheets/common'
-import _ from 'lodash'
 import { getAllMatches } from '../../actions/match'
-
-import ReactTable from 'react-table'
-import 'react-table/react-table.css'
+import _ from 'lodash'
 import moment from 'moment'
 
 class Matches extends Component {

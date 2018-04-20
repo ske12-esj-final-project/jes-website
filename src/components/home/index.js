@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
-import { PageContent, LayoutContent, Header, Subheader, Theme } from '../stylesheets/common'
+import { PageContent, LayoutContent, Subheader, Theme } from '../stylesheets/common'
 
 const Colors = {
     Red: '#F44336',
@@ -44,8 +44,8 @@ const Article = styled.article`
 `
 const ArticleContent = styled.div`
     padding: 0 2.33rem;
-    margin-left: ${ props => props.align == 'left' ? '5rem' : '0' };
-    margin-right: ${ props => props.align == 'right' ? '5rem' : '0' };
+    margin-left: ${ props => props.align === 'left' ? '5rem' : '0' };
+    margin-right: ${ props => props.align === 'right' ? '5rem' : '0' };
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -60,7 +60,7 @@ const ArticleContent = styled.div`
     -webkit-align-items: left;
     -webkit-box-align: left;
     -ms-flex-align: left;
-    align-items: ${ props => props.align == 'left' ? 'flex-start' : 'flex-end' };
+    align-items: ${ props => props.align === 'left' ? 'flex-start' : 'flex-end' };
     text-align: ${ props => props.align };
     color: ${ props => props.theme };
 

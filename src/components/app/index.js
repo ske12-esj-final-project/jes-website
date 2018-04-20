@@ -224,7 +224,9 @@ class App extends Component {
                         </NavbarContent>
         
                         <MobileNavbar>
-                            <NavbarButton onClick={() => this.toggleSidebar()}>Click me</NavbarButton>
+                            <NavbarButton onClick={() => this.toggleSidebar()}>
+                                <img src="/hamburger.svg" alt="Click me"/>
+                            </NavbarButton>
                             <NavbarLink to="/">
                                 <NavbarLogo />
                             </NavbarLink>

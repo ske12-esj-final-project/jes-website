@@ -48,6 +48,7 @@ export const PageContent = styled.div`
 
 export const LayoutContent = styled.div`
     padding: 5rem 2.22rem 1.66rem 2.22rem;
+    width: 58.66%;
     box-sizing: border-box;
     -webkit-transition: -webkit-transform 150ms ease-out;
     -webkit-transition: transform 150ms ease-out;
