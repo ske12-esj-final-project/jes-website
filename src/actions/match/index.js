@@ -74,7 +74,7 @@ export const getMatch = (matchID) => (dispatch) => {
 
 export const getMatchKill = (matchID) => (dispatch) => {
     dispatch(getMatchKillStart())
-    return axios.get(API.MATCH + '/' + matchID + '/kills')
+    return axios.get(API.USER_MATCH + '/killfeed/' + matchID)
     .then(res => {
         dispatch(getMatchKillSuccess(res.data))
         return res

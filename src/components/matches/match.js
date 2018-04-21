@@ -100,7 +100,7 @@ class MatchInfo extends Component {
                             columns={[
                                 {
                                     Header: 'Killer',
-                                    accessor: 'playerID',
+                                    accessor: 'killer',
                                     Cell: props => <Killer>{ props.value }</Killer>
                                 },
                                 {
@@ -112,7 +112,7 @@ class MatchInfo extends Component {
                                 },
                                 {
                                     Header: 'Victim',
-                                    accessor: 'victimID',
+                                    accessor: 'victim',
                                     Cell: props => <Victim>{ props.value }</Victim>
                                 },
                             ]}

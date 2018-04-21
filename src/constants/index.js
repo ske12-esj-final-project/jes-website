@@ -2,6 +2,7 @@ export default {
     API: {
         USER: 'http://jes.api.user.safesuk.me/v1/users',
         MATCH: 'http://jes.api.match.safesuk.me/v1/matches',
+        USER_MATCH: 'http://localhost:8082/v1',
         KILL: 'http://jes.api.match.safesuk.me/v1/kills'
     },
 
