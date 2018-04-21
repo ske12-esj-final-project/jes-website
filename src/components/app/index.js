@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import Home from '../home'
 import Leaderboard from '../leaderboard'
+import Profile from '../leaderboard/profile'
 import Matches from '../matches'
 import MatchInfo from '../matches/match'
 import About from '../about'
@@ -243,6 +244,7 @@ class App extends Component {
                 <main>
                     <Route exact path="/" component={ Home }></Route>
                     <Route exact path="/leaderboard" component={ Leaderboard }></Route>
+                    <Route path="/profile/:id" component={ Profile }></Route>
                     <Route exact path="/matches" component={ Matches }></Route>
                     <Route exact path="/about" component={ About }></Route>
                     <Route path="/matches/:id" component={ MatchInfo }></Route>

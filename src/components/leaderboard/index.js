@@ -30,6 +30,13 @@ class Leaderboard extends Component {
                             accessor: 'score'
                             },
                         ]}
+                        getTdProps={(state, rowInfo) => {
+                            return {
+                                onClick: () => {
+                                    this.props.history.push('/profile/' + rowInfo.original.id)
+                                }
+                            }
+                        }}
                         defaultPageSize={10}
                         className="-striped -highlight"
                     />
