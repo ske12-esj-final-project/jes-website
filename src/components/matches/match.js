@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getMatch, getMatchKill } from '../../actions/match'
 import { Helmet } from 'react-helmet'
 import { PageContent, LayoutContent, Header, BorderlessTable, Theme } from '../stylesheets/common'
+import ReactTooltip from 'react-tooltip'
 import ReactTable from 'react-table'
 import styled from 'styled-components'
 import moment from 'moment'
@@ -15,13 +16,11 @@ const MinimapSection = styled.div`
     position: relative;
     overflow: hidden;
 `
-
 const Minimap = styled.img`
     position: relative;
     width: 100%;
     height: auto;
 `
-
 const IconGroup = styled.div`
     position: absolute;
     top: 0px;
@@ -30,7 +29,6 @@ const IconGroup = styled.div`
     bottom: 0px;
     z-index: 102;
 `
-
 const Icon = styled.img`
     position: absolute;
     left: ${ props => props.x }%;
@@ -38,17 +36,33 @@ const Icon = styled.img`
     width: 2%;
     height: 2%;
 `
-
 const Killer = styled.h2`
     font-size: 1.33rem;
 `
-
 const WeaponImage = styled.object`
-    width: 100%;
+    width: ${ props => props.size }%;
 `
-
 const Victim = styled.h2`
     font-size: 1.33rem;
+`
+const Tooltip = styled.div`
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    width: 13.33rem;
+    height: 3.33rem;
 `
 
 class MatchInfo extends Component {
@@ -85,10 +99,26 @@ class MatchInfo extends Component {
                         <IconGroup>
                             {
                                 this.props.matches.kills.map((kill, index) => {
-                                    return <Icon key={ index } src="/images/cross.png"
+                                    return <div key={ index }>
+                                        <ReactTooltip id="kill" type="error">
+                                            <Tooltip>
+                                                <h2>{ kill.killer.username }</h2>
+                                                <WeaponImage
+                                                size="50" 
+                                                type="image/svg+xml"
+                                                data={ `/guns/${ kill.weaponUsed }.svg` } 
+                                            />
+                                                <h2>{ kill.victim.username }</h2>
+                                            </Tooltip>
+                                        </ReactTooltip>
+                                        <Icon
+                                        data-tip
+                                        data-for="kill" 
+                                        src="/images/cross.png"
                                         x={ 48 + kill.victimPos.x / 4 } 
                                         z={ 48 + kill.victimPos.z / 4 } 
                                         alt="Cross"/>
+                                    </div>
                                 })
                             }
                         </IconGroup>
@@ -109,7 +139,8 @@ class MatchInfo extends Component {
                                 {
                                     Header: 'Weapon used',
                                     accessor: 'weaponUsed',
-                                    Cell: props => <WeaponImage type="image/svg+xml"
+                                    Cell: props => <WeaponImage size="100"
+                                        type="image/svg+xml"
                                         data={ `/guns/${ props.value }.svg` } 
                                         />
                                 },
