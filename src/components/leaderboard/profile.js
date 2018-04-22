@@ -58,18 +58,7 @@ class Profile extends Component {
         this.props.getProfile(this.props.match.params.id)
     }
 
-    getWeaponKills(kills) {
-        let counts = _.countBy(kills, 'weaponUsed')
-        return _.map(Object.keys(counts), weapon => {
-            return {
-                name: weapon,
-                kills: counts[weapon]
-            }
-        })
-    }
-
     render() {
-        let weaponKills = this.getWeaponKills(this.props.profile.profile.kills)
         return (
             <PageContent>
                 <Helmet>
@@ -91,7 +80,7 @@ class Profile extends Component {
                             <CardDescription>Wins</CardDescription>
                         </Card>
                         <Card>
-                            <Header>{ _.size(this.props.profile.profile.joinedMatches) }</Header>
+                            <Header>{ _.size(this.props.profile.profile.recentMatches) }</Header>
                             <CardDescription>Matches</CardDescription>
                         </Card>
                     </BasicInformation>
@@ -99,9 +88,9 @@ class Profile extends Component {
                 
                 <Subheader theme={ Theme.Main }>Best Weapons</Subheader>
                 {
-                    _.size(weaponKills) > 0 ?
+                    _.size(this.props.profile.profile.kills) > 0 ?
                     <BestWeapons 
-                        data={ weaponKills }
+                        data={ this.props.profile.profile.kills }
                         columns={[
                             {
                                 Header: 'Name',
@@ -115,7 +104,7 @@ class Profile extends Component {
                                 accessor: 'kills'
                             }
                         ]}
-                        pageSize={ _.size(weaponKills) }
+                        pageSize={ _.size(this.props.profile.profile.kills) }
                         showPagination={false}
                     />
                     :
@@ -167,6 +156,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.profile)
     return {
         profile: state.profile
     }
