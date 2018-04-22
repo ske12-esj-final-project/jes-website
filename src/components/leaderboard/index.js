@@ -47,7 +47,6 @@ class Leaderboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.player)
     return {
         player: state.player
     }

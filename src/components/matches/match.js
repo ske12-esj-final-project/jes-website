@@ -101,7 +101,7 @@ class MatchInfo extends Component {
                                 {
                                     Header: 'Killer',
                                     accessor: 'killer',
-                                    Cell: props => <Killer>{ props.value }</Killer>
+                                    Cell: props => <Killer>{ props.value.username }</Killer>
                                 },
                                 {
                                     Header: 'Weapon used',
@@ -113,7 +113,7 @@ class MatchInfo extends Component {
                                 {
                                     Header: 'Victim',
                                     accessor: 'victim',
-                                    Cell: props => <Victim>{ props.value }</Victim>
+                                    Cell: props => <Victim>{ props.value.username }</Victim>
                                 },
                             ]}
                             pageSize={ _.size(this.props.matches.kills) }
