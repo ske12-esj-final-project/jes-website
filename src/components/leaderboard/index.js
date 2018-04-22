@@ -27,6 +27,7 @@ class Leaderboard extends Component {
                             },
                             {
                             Header: 'Score',
+                            id: 'score',
                             accessor: 'score'
                             },
                         ]}
@@ -37,6 +38,12 @@ class Leaderboard extends Component {
                                 }
                             }
                         }}
+                        defaultSorted={[
+                            {
+                                id: 'score',
+                                desc: true
+                            }
+                        ]}
                         defaultPageSize={10}
                         className="-striped -highlight"
                     />
