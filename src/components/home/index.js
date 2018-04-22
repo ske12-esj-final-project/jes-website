@@ -23,7 +23,7 @@ const PlayButton = styled.a`
     color: white;
     background: #00C853;
     padding: 0.5rem 0;
-    margin: 0.5rem 1rem;
+    margin: 2rem 0.5rem;
     width: 11rem;
     border: 2px solid white;
     border-radius: 3px;
@@ -109,10 +109,11 @@ const Home = props => (
         <LayoutContent>
             <Logo src="/logo_large.svg" alt="JES"></Logo>
             <Subheader theme={ Theme.Dark }>Multiplayer FPS Battle Royale Game</Subheader>
-            <PlayButton href={ constants.URL.DOWNLOAD } target="_blank">
-                Start
-            </PlayButton>
         </LayoutContent>
+        
+        <PlayButton href={ constants.URL.DOWNLOAD } target="_blank">
+                Start
+        </PlayButton>
 
         <Article color={ Colors.Red }>
             <ArticleContent theme={ Theme.Dark } align="left">
@@ -140,7 +141,7 @@ const Home = props => (
             <ArticleContent theme={ Theme.Dark } align="left">
                 <ArticleHeader>Easy to play</ArticleHeader>
                 <ArticleDescription>
-                    With simple and easy-to-use HUD, just only few games, you will get used to
+                    With simple and user-friendly HUD, just only few games, you will get used to
                     gunplay mechanics and hiding spots, as well as potential strategies of the victory.
                 </ArticleDescription>
             </ArticleContent>

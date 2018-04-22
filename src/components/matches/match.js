@@ -13,6 +13,10 @@ const MatchDetail = styled.h2`
     color: white;
 `
 const MinimapSection = styled.div`
+    @media (max-width: 33.3em) {
+        display: none;
+    }
+
     position: relative;
     overflow: hidden;
 `
@@ -35,6 +39,11 @@ const Icon = styled.img`
     bottom: ${ props => props.z }%;
     width: 2%;
     height: 2%;
+`
+const Killfeed = styled(BorderlessTable)`
+    @media (min-width: 33.3em) {
+        display: none;
+    }
 `
 const Killer = styled.h2`
     font-size: 1.33rem;
@@ -128,7 +137,7 @@ class MatchInfo extends Component {
 
                 {
                         _.size(this.props.matches.kills) > 0 ? (
-                            <BorderlessTable 
+                            <Killfeed 
                             data={ this.props.matches.kills }
                             columns={[
                                 {
