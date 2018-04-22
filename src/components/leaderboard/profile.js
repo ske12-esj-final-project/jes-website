@@ -72,7 +72,7 @@ class Profile extends Component {
                             <CardDescription>Score</CardDescription>
                         </Card>
                         <Card>
-                            <Header>{ _.size(this.props.profile.profile.kills) }</Header>
+                            <Header>{ _.sumBy(this.props.profile.profile.kills, 'kills') }</Header>
                             <CardDescription>Kills</CardDescription>
                         </Card>
                         <Card>
@@ -112,7 +112,7 @@ class Profile extends Component {
                 }
                 <Subheader theme={ Theme.Main }>Recent Matches</Subheader>
                 <MyTable 
-                        data={this.props.profile.profile.joinedMatches} 
+                        data={this.props.profile.profile.recentMatches} 
                         columns={[
                             {
                                 Header: 'ID',
