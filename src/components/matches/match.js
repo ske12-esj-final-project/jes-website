@@ -79,7 +79,7 @@ class MatchInfo extends Component {
                     <MatchDetail>
                         Started on { this.getDateFromNow(this.props.matches.match.dateCreated) }
                     </MatchDetail>
-
+                    
                     <MinimapSection>
                         <Minimap src="/images/map.png" alt="Minimap"/>
                         <IconGroup>

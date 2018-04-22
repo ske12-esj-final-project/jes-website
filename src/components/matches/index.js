@@ -20,7 +20,8 @@ class Matches extends Component {
                 </Helmet>
                 <LayoutContent>
                     <Header theme={ Theme.Main }>Matches</Header>
-                    <MyTable 
+                </LayoutContent>
+                <MyTable 
                         data={this.props.matches.matches} 
                         columns={[
                             {
@@ -59,7 +60,6 @@ class Matches extends Component {
                         defaultPageSize={10}
                         className="-striped -highlight"
                     />
-                </LayoutContent>
             </PageContent>
         )
     }

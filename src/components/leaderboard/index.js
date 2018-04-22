@@ -17,8 +17,9 @@ class Leaderboard extends Component {
                     <title>Leaderboard - Just Enjoy Shooting</title>
                 </Helmet>
                 <LayoutContent>
-                <Header theme={ Theme.Main }>Leaderboard</Header>
-                    <MyTable 
+                    <Header theme={ Theme.Main }>Leaderboard</Header>
+                </LayoutContent>
+                <MyTable 
                         data={this.props.player.players} 
                         columns={[
                             {
@@ -47,7 +48,6 @@ class Leaderboard extends Component {
                         defaultPageSize={10}
                         className="-striped -highlight"
                     />
-                </LayoutContent>
             </PageContent>
         )
     }

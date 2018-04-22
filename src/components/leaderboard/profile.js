@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import _ from 'lodash'
 import moment from 'moment'
 import { PageContent, LayoutContent, Header, Subheader, 
-        MyTable, BorderlessTable, Theme } from '../stylesheets/common'
+        MyTable, BorderlessTable, Theme, Description } from '../stylesheets/common'
 import { getProfile } from '../../actions/profile'
 
 const BasicInformation = styled.div`
@@ -45,6 +45,9 @@ const Card = styled.div`
 const CardDescription = styled(Subheader)`
     font-size: 1.33rem;
 `
+const BestWeapons = styled(BorderlessTable)`
+    font-size: 2.22rem;
+`
 const WeaponImage = styled.object`
     width: 100%;
 `
@@ -76,7 +79,7 @@ class Profile extends Component {
                     <Header theme={ Theme.Main }>{ this.props.profile.profile.username }</Header>
                     <BasicInformation>
                         <Card>
-                            <Header>{ this.props.profile.profile.score }</Header>
+                            <Header>{ this.props.profile.profile.score || 0 }</Header>
                             <CardDescription>Score</CardDescription>
                         </Card>
                         <Card>
@@ -84,7 +87,7 @@ class Profile extends Component {
                             <CardDescription>Kills</CardDescription>
                         </Card>
                         <Card>
-                            <Header>{ this.props.profile.profile.numWins }</Header>
+                            <Header>{ this.props.profile.profile.numWins || 0 }</Header>
                             <CardDescription>Wins</CardDescription>
                         </Card>
                         <Card>
@@ -95,7 +98,9 @@ class Profile extends Component {
                 </LayoutContent>
                 
                 <Subheader theme={ Theme.Main }>Best Weapons</Subheader>
-                <BorderlessTable 
+                {
+                    _.size(weaponKills) > 0 ?
+                    <BestWeapons 
                         data={ weaponKills }
                         columns={[
                             {
@@ -113,6 +118,9 @@ class Profile extends Component {
                         pageSize={ _.size(weaponKills) }
                         showPagination={false}
                     />
+                    :
+                    <Description theme={ Theme.Dark }>No data</Description>
+                }
                 <Subheader theme={ Theme.Main }>Recent Matches</Subheader>
                 <MyTable 
                         data={this.props.profile.profile.joinedMatches} 

@@ -72,6 +72,12 @@ export const Subheader = styled.h2`
     color: ${ props => props.theme };
 `
 
+export const Description = styled.h3`
+    font-size: 1.66rem;
+    text-align: center;
+    color: ${ props => props.theme };
+`
+
 export const MyTable = styled(ReactTable) `
     background: white;
     font-size: 1.33rem;
