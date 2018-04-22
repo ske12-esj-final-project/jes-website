@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getMatch, getMatchKill } from '../../actions/match'
 import { Helmet } from 'react-helmet'
-import { PageContent, LayoutContent, Header, Theme } from '../stylesheets/common'
+import { PageContent, LayoutContent, Header, BorderlessTable, Theme } from '../stylesheets/common'
 import ReactTable from 'react-table'
 import styled from 'styled-components'
 import moment from 'moment'
@@ -37,19 +37,6 @@ const Icon = styled.img`
     bottom: ${ props => props.z }%;
     width: 2%;
     height: 2%;
-`
-
-const Killfeed = styled(ReactTable)`
-    text-align: center;
-    color: white;
-
-    .rt-td {
-        margin: auto;
-    }
-
-    .rt-th {
-        display: none;
-    }
 `
 
 const Killer = styled.h2`
@@ -93,9 +80,25 @@ class MatchInfo extends Component {
                         Started on { this.getDateFromNow(this.props.matches.match.dateCreated) }
                     </MatchDetail>
 
-                    {
+                    <MinimapSection>
+                        <Minimap src="/images/map.png" alt="Minimap"/>
+                        <IconGroup>
+                            {
+                                this.props.matches.kills.map((kill, index) => {
+                                    return <Icon key={ index } src="/images/cross.png"
+                                        x={ 48 + kill.victimPos.x / 4 } 
+                                        z={ 48 + kill.victimPos.z / 4 } 
+                                        alt="Cross"/>
+                                })
+                            }
+                        </IconGroup>
+                    </MinimapSection>
+                
+                </LayoutContent>
+
+                {
                         _.size(this.props.matches.kills) > 0 ? (
-                            <Killfeed 
+                            <BorderlessTable 
                             data={ this.props.matches.kills }
                             columns={[
                                 {
@@ -123,22 +126,6 @@ class MatchInfo extends Component {
                             <MatchDetail>No kills found</MatchDetail>
                         )
                     }
-
-                    <MinimapSection>
-                        <Minimap src="/images/map.png" alt="Minimap"/>
-                        <IconGroup>
-                            {
-                                this.props.matches.kills.map((kill, index) => {
-                                    return <Icon key={ index } src="/images/cross.png"
-                                        x={ 48 + kill.victimPos.x / 4 } 
-                                        z={ 48 + kill.victimPos.z / 4 } 
-                                        alt="Cross"/>
-                                })
-                            }
-                        </IconGroup>
-                    </MinimapSection>
-                
-                </LayoutContent>
             </PageContent>
                         
         )

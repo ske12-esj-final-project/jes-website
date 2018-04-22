@@ -81,3 +81,20 @@ export const MyTable = styled(ReactTable) `
         cursor: pointer;
     }
 `
+export const BorderlessTable = styled(ReactTable)`
+    @media (max-width: 62.5em) {
+        width: 100%;
+    }
+
+    width: 50%;    
+    text-align: center;
+    color: white;
+
+    .rt-td {
+        margin: auto;
+    }
+
+    .rt-th {
+        display: none;
+    }
+`

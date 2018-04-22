@@ -3,7 +3,10 @@ import constants from '../constants'
 const ACTION = constants.ACTION
 
 let initialState = {
-    profile: {}
+    profile: {
+        username: 'Username',
+        kills: []
+    }
 }
 
 const profileReducer = (state = initialState, action) => {
