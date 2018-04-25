@@ -225,7 +225,6 @@ class App extends Component {
                             <NavbarLink to="/">
                                 <NavbarLogo />
                             </NavbarLink>
-                            <NavbarButton>GitHub Logo</NavbarButton>
                         </MobileNavbar>
                     </Navbar>
                     <Sidebar showSidebar={ this.state.show }>
@@ -244,6 +243,7 @@ class App extends Component {
                     <Route exact path="/matches" component={ Matches }></Route>
                     <Route exact path="/about" component={ About }></Route>
                     <Route path="/matches/:id" component={ MatchInfo }></Route>
+                    {/* <Route component={()=>(<div>NoMatch</div>)} /> */}
                 </main>
             </LayoutContainer>
         )

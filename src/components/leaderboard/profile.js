@@ -115,15 +115,6 @@ class Profile extends Component {
                         data={this.props.profile.profile.recentMatches} 
                         columns={[
                             {
-                                Header: 'ID',
-                                accessor: '_id'
-                            },
-                            {
-                                Header: '# Players',
-                                id: 'players',
-                                accessor: d => _.size(d.players)
-                            },
-                            {
                                 Header: 'Started on',
                                 accessor: 'dateCreated',
                                 Cell: props => <span>{ moment(props.value).fromNow() }</span>,
@@ -132,12 +123,21 @@ class Profile extends Component {
                                     b = moment(b)
                                     return b > a ? 1 : -1
                                 }
+                            },
+                            {
+                                Header: '# Players',
+                                id: 'players',
+                                accessor: d => _.size(d.players)
+                            },
+                            {
+                                Header: 'Duration (sec)',
+                                accessor: 'duration'
                             }
                         ]}
                         getTdProps={(state, rowInfo) => {
                             return {
                                 onClick: () => {
-                                    this.props.history.push('/matches/' + rowInfo.row._id)
+                                    this.props.history.push('/matches/' + rowInfo.original._id)
                                 }
                             }
                         }}
