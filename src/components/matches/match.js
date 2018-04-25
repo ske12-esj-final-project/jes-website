@@ -93,7 +93,7 @@ class MatchInfo extends Component {
                     <title>Match { this.props.match.params.id } - Just Enjoy Shooting</title>
                 </Helmet>
                 <LayoutContent>
-                    <Header theme={ Theme.Main }>Match { this.props.match.params.id }</Header>
+                    <Header theme={ Theme.Main }>Match Report</Header>
 
                     <MatchDetail>
                         Duration { this.props.matches.match.duration } seconds

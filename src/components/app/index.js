@@ -216,10 +216,6 @@ class App extends Component {
                                 <NavbarSeparator />
                                 <NavbarLink activeClassName='active' to="/about">About</NavbarLink>
                             </NavbarLeft>
-        
-                            <NavbarRight>
-                            <NavbarLink to="/">GitHub Logo</NavbarLink>                        
-                            </NavbarRight>
                         </NavbarContent>
         
                         <MobileNavbar>
