@@ -8,6 +8,11 @@ class Leaderboard extends Component {
 
     componentDidMount() {
         this.props.getAllPlayers()
+        this.leaderInterval = setInterval(() => this.props.getAllPlayers(), 60000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.leaderInterval)
     }
 
     render() {

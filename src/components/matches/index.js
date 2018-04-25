@@ -10,6 +10,11 @@ class Matches extends Component {
 
     componentDidMount() {
         this.props.getAllMatches()
+        this.matchInterval = setInterval(() => this.props.getAllMatches(), 60000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.matchInterval)
     }
 
     render() {
