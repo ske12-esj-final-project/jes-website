@@ -21,6 +21,10 @@ injectGlobal`
     p {
         font-family: 'Roboto';
     }
+
+    body {
+        background-color: #444;
+    }
 `
 
 export const Theme = {

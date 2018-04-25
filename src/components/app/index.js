@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, NavLink } from 'react-router-dom'
+import { Route, Switch, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 import Home from '../home'
@@ -8,6 +8,7 @@ import Profile from '../leaderboard/profile'
 import Matches from '../matches'
 import MatchInfo from '../matches/match'
 import About from '../about'
+import Error from '../error'
 
 const LayoutContainer = styled.div`
     @media (max-width: 62.5em) {
@@ -237,13 +238,15 @@ class App extends Component {
                 </header>
         
                 <main>
-                    <Route exact path="/" component={ Home }></Route>
-                    <Route exact path="/leaderboard" component={ Leaderboard }></Route>
-                    <Route path="/profile/:id" component={ Profile }></Route>
-                    <Route exact path="/matches" component={ Matches }></Route>
-                    <Route exact path="/about" component={ About }></Route>
-                    <Route path="/matches/:id" component={ MatchInfo }></Route>
-                    {/* <Route component={()=>(<div>NoMatch</div>)} /> */}
+                    <Switch>
+                        <Route exact path="/" component={ Home }></Route>
+                        <Route exact path="/leaderboard" component={ Leaderboard }></Route>
+                        <Route path="/profile/:id" component={ Profile }></Route>
+                        <Route exact path="/matches" component={ Matches }></Route>
+                        <Route exact path="/about" component={ About }></Route>
+                        <Route path="/matches/:id" component={ MatchInfo }></Route>
+                        <Route component={ Error } />
+                    </Switch>
                 </main>
             </LayoutContainer>
         )
