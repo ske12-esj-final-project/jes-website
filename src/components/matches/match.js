@@ -109,7 +109,7 @@ class MatchInfo extends Component {
                             {
                                 this.props.matches.kills.map((kill, index) => {
                                     return <div key={ index }>
-                                        <ReactTooltip id="kill" type="error">
+                                        <ReactTooltip id={ "kill" + index } type="error">
                                             <Tooltip>
                                                 <h2>{ kill.killer.username }</h2>
                                                 <WeaponImage
@@ -122,7 +122,7 @@ class MatchInfo extends Component {
                                         </ReactTooltip>
                                         <Icon
                                         data-tip
-                                        data-for="kill" 
+                                        data-for={ "kill" + index } 
                                         src="/images/cross.png"
                                         x={ 48 + kill.victimPos.x / 4 } 
                                         z={ 48 + kill.victimPos.z / 4 } 
