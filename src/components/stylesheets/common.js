@@ -51,7 +51,6 @@ export const PageContent = styled.div`
     text-align: center;
     background-color: #444;
 `
-
 export const LayoutContent = styled.div`
     padding: 5rem 2.22rem 1.66rem 2.22rem;
     width: 58.66%;
@@ -60,7 +59,6 @@ export const LayoutContent = styled.div`
     -webkit-transition: transform 150ms ease-out;
     transition: transform 150ms ease-out;
 `
-
 export const Header = styled.h1`
     display: block;
     width: 100%;
@@ -69,7 +67,6 @@ export const Header = styled.h1`
     word-wrap: break-word;
     color: ${ props => props.theme };
 `
-
 export const Subheader = styled.h2`
     font-size: 2.33rem;
     text-align: center;
@@ -81,7 +78,6 @@ export const Description = styled.h3`
     text-align: center;
     color: ${ props => props.theme };
 `
-
 export const MyTable = styled(ReactTable) `
     background: white;
     font-size: 1.33rem;
@@ -107,4 +103,7 @@ export const BorderlessTable = styled(ReactTable)`
     .rt-th {
         display: none;
     }
+`
+export const WeaponImage = styled.object`
+    width: ${ props => props.size }%;
 `
