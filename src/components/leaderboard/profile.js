@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
+import { getProfile } from '../../actions/profile'
+
+import { PageContent, LayoutContent, Header, Subheader, 
+        MyTable, BorderlessTable, Theme, 
+        WeaponImage, Description } from '../stylesheets/common'
+
 import _ from 'lodash'
 import moment from 'moment'
-import { PageContent, LayoutContent, Header, Subheader, 
-        MyTable, BorderlessTable, Theme, Description } from '../stylesheets/common'
-import { getProfile } from '../../actions/profile'
 
 const BasicInformation = styled.div`
     @media (max-width: 62.5em) {
@@ -48,14 +51,17 @@ const CardDescription = styled(Subheader)`
 const BestWeapons = styled(BorderlessTable)`
     font-size: 2.22rem;
 `
-const WeaponImage = styled.object`
-    width: 100%;
-`
+const BEST_WEAPONS_SIZE = 3
 
 class Profile extends Component {
 
     componentDidMount() {
         this.props.getProfile(this.props.match.params.id)
+    }
+
+    getBestWeaponDisplaySize() {
+        let numWeaponKills = _.size(this.props.profile.profile.kills)
+        return numWeaponKills <= BEST_WEAPONS_SIZE ? numWeaponKills : BEST_WEAPONS_SIZE
     }
 
     render() {
@@ -95,16 +101,18 @@ class Profile extends Component {
                             {
                                 Header: 'Name',
                                 accessor: 'name',
-                                Cell: props => <WeaponImage type="image/svg+xml"
-                                            data={ `/guns/${ props.value }.svg` } 
-                                            />
+                                Cell: props => <WeaponImage
+                                                size="100" 
+                                                type="image/svg+xml"
+                                                data={ `/guns/${ props.value }.svg` } 
+                                                />
                             },
                             {
                                 Header: 'Kills',
                                 accessor: 'kills'
                             }
                         ]}
-                        pageSize={ _.size(this.props.profile.profile.kills) }
+                        pageSize={ this.getBestWeaponDisplaySize() }
                         showPagination={false}
                     />
                     :
