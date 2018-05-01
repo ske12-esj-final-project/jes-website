@@ -63,20 +63,6 @@ const NavbarLeft = styled.div`
     -ms-flex-pack: start;
     justify-content: flex-start;
 `
-const NavbarRight = styled.div`
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-`
 const NavbarLink = styled(NavLink)`
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;

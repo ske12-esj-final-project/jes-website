@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import { PageContent, LayoutContent, Header, Description, Theme } from '../stylesheets/common'
+import { PageContent, LayoutContent, Header, Theme } from '../stylesheets/common'
 
 const Text = styled.p`
     color: ${ props => props.theme }

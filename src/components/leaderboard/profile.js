@@ -5,11 +5,11 @@ import { Helmet } from 'react-helmet'
 import { getProfile } from '../../actions/profile'
 
 import { PageContent, LayoutContent, Header, Subheader, 
-        MyTable, BorderlessTable, Theme, 
+        BorderlessTable, Theme, 
         WeaponImage, Description } from '../stylesheets/common'
 
+import MatchTable from '../common/matchTable'
 import _ from 'lodash'
-import moment from 'moment'
 
 const BasicInformation = styled.div`
     @media (max-width: 62.5em) {
@@ -77,18 +77,22 @@ class Profile extends Component {
                             <Header>{ this.props.profile.profile.score || 0 }</Header>
                             <CardDescription>Score</CardDescription>
                         </Card>
+
                         <Card>
                             <Header>{ _.sumBy(this.props.profile.profile.kills, 'kills') }</Header>
                             <CardDescription>Kills</CardDescription>
                         </Card>
+                        
                         <Card>
                             <Header>{ this.props.profile.profile.numWins || 0 }</Header>
                             <CardDescription>Wins</CardDescription>
                         </Card>
+
                         <Card>
                             <Header>{ _.size(this.props.profile.profile.recentMatches) }</Header>
                             <CardDescription>Matches</CardDescription>
                         </Card>
+                        
                     </BasicInformation>
                 </LayoutContent>
                 
@@ -119,45 +123,8 @@ class Profile extends Component {
                     <Description theme={ Theme.Dark }>No data</Description>
                 }
                 <Subheader theme={ Theme.Main }>Recent Matches</Subheader>
-                <MyTable 
-                        data={this.props.profile.profile.recentMatches} 
-                        columns={[
-                            {
-                                Header: 'Started on',
-                                accessor: 'dateCreated',
-                                Cell: props => <span>{ moment(props.value).fromNow() }</span>,
-                                sortMethod: (a, b) => {
-                                    a = moment(a)
-                                    b = moment(b)
-                                    return b > a ? 1 : -1
-                                }
-                            },
-                            {
-                                Header: '# Players',
-                                id: 'players',
-                                accessor: d => _.size(d.players)
-                            },
-                            {
-                                Header: 'Duration (sec)',
-                                accessor: 'duration'
-                            }
-                        ]}
-                        getTdProps={(state, rowInfo) => {
-                            return {
-                                onClick: () => {
-                                    this.props.history.push('/matches/' + rowInfo.original._id)
-                                }
-                            }
-                        }}
-                        defaultSorted={[
-                            {
-                                id: 'dateCreated',
-                                asc: true
-                            }
-                        ]}
-                        defaultPageSize={10}
-                        className="-striped -highlight"
-                    />
+                
+                <MatchTable matches={ this.props.profile.profile.recentMatches } />
             </PageContent>
         )
     }
