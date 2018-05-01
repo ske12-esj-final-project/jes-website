@@ -32,6 +32,7 @@ class MatchTable extends Component {
                 getTdProps={(state, rowInfo) => {
                     return {
                         onClick: () => {
+                            console.log(this.props)
                             this.props.history.push('/matches/' + rowInfo.original._id)
                         }
                     }

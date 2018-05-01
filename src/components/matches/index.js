@@ -25,7 +25,7 @@ class Matches extends Component {
                 <LayoutContent>
                     <Header theme={ Theme.Main }>Matches</Header>
                 </LayoutContent>
-                <MatchTable matches={ this.props.matches.matches } />
+                <MatchTable history={ this.props.history } matches={ this.props.matches.matches } />
             </PageContent>
         )
     }

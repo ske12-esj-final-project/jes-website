@@ -124,7 +124,7 @@ class Profile extends Component {
                 }
                 <Subheader theme={ Theme.Main }>Recent Matches</Subheader>
                 
-                <MatchTable matches={ this.props.profile.profile.recentMatches } />
+                <MatchTable history={ this.props.history } matches={ this.props.profile.profile.recentMatches } />
             </PageContent>
         )
     }
